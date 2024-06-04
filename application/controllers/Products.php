@@ -5,6 +5,17 @@ class Products extends CI_Controller {
         $this->load->model('product_model');
         $this->load->library('session');
     }
+    
+
+
+    // Read all products
+    
+    public function index() {
+        $data['products'] = $this->product_model->get_products();
+        $this->load->view('index', $data);
+    }
+
+
 
     // Create a new product
     public function create() {
@@ -25,22 +36,34 @@ class Products extends CI_Controller {
                 'name' => $this->input->post('name'),
                 'discription' => $this->input->post('discription')
             );
-
-            $product_id = $this->product_model->create_product($data);
-            $this->session->set_flashdata('success_message', 'Product created successfully');
-            redirect('products');
+            // Handle file upload
+            if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                $upload_path = 'uploads/profile_images/';
+                
+                if (!is_dir($upload_path)) {
+                    mkdir($upload_path, 0777, true);
+                }
+                $file_name = basename($_FILES['image']['name']);
+                
+                $file_tmp = $_FILES['image']['tmp_name'];
+                $file_path = $upload_path . $file_name . '_' . time();
+                if (move_uploaded_file($file_tmp, $file_path)) {
+                    $data['Image'] = $file_path;  // Assign the file path to 'image' column
+                    // print_r($file_path);
+                    // die();
+                } else {
+                    $data['upload_error'] = 'Failed to move uploaded file.';
+                }
+            }
+            
+            
+            
+            $this->product_model->create_product($data);
+            redirect('products');            
         }
     }
-
-    // Read all products
     
-    public function index() {
-        $data['products'] = $this->product_model->get_products();
-        // print_r($data);
-        // die();
-        $this->load->view('index', $data);
-    }
-
+    
     public function update($id) {
         // Get the product details based on the $id
         $data['product'] = $this->product_model->get_product_by_id($id);

@@ -4,18 +4,22 @@ class Product_model extends CI_Model {
         parent::__construct();
         $this->load->database();
     }
-
-    // Create a new product
+    
     public function create_product($data) {
+        //print_r($data);
+        //die();
         $this->db->insert('products', $data);
-        // return $this->db->insert_id();
+        return $this->db->insert_id();
+
     }
+
 
     // Get all products
     public function get_products() {
         $query = $this->db->get('products');
         return $query->result_array();
     }
+    
 
     // Get product by ID
     public function get_product($id) {
@@ -39,6 +43,8 @@ class Product_model extends CI_Model {
         // Query the database to retrieve the product with the given ID
         $query = $this->db->get_where('product_details', array('id' => $id));
         return $query->row_array(); // Return the result as an associative array
-    }
+    } 
+
+    
 }
 ?>

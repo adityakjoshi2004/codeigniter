@@ -51,7 +51,7 @@ function set_active($page) {
                 <p class="card-text">company_name<?php echo $product['company_name']; ?></p>
                 <p class="card-text">discription: <?php echo $product['discription']; ?></p>
                 <p class="card-text">price: $<?php echo $product['price']; ?></p>
-                <img src="<?php echo base_url($product['image']); ?>" alt="<?php echo $product['name']; ?>" class="card-img-top">
+                <!-- <img src="<?php //echo base_url($product['image']); ?>" alt="<?php// echo $product['name']; ?>" class="card-img-top"> -->
                 <p class="card-text">availability: <?php echo $product['availability']; ?></p>
                 <a href="<?php echo base_url('payment/checkout/' . $product['id']); ?>" class="btn btn-primary">Proceed to Checkout</a>
             </div>

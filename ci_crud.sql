@@ -63,9 +63,9 @@ CREATE TABLE `product_details` (
 --
 
 INSERT INTO `product_details` (`id`, `name`, `company_name`, `price`, `image`, `discription`, `availability`) VALUES
-(1, 'Omega Speedmaster', 'Omega', '4999.99', 'omega.png', 'A legendary watch with a rich history, known for its precision and durability', 0),
-(2, 'Rolex Submariner', 'Rolex', '8999.99', 'rolex.png', 'An iconic dive watch that combines style with functionality', 0),
-(3, 'Tag Heuer Carrera', 'Tag Heuer', '2999.99', 'tag.png', 'A sporty and elegant chronograph that stands out for its performance and design', 0);
+(1, 'Omega Speedmaster', 'Omega', '4999.99',  'A legendary watch with a rich history, known for its precision and durability', 0),
+(2, 'Rolex Submariner', 'Rolex', '8999.99',  'An iconic dive watch that combines style with functionality', 0),
+(3, 'Tag Heuer Carrera', 'Tag Heuer', '2999.99',  'A sporty and elegant chronograph that stands out for its performance and design', 0);
 
 -- --------------------------------------------------------
 

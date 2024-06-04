@@ -1,3 +1,10 @@
+<?php 
+    // echo "<pre>";
+    // print_r($products);
+
+    // die();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +63,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Discription</th>
+                    <th>image</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -66,6 +74,7 @@
                             <td><?php echo $product['id']; ?></td>
                             <td><?php echo $product['name']; ?></td>
                             <td><?php echo $product['discription']; ?></td>
+                            <td><img src="<?php echo base_url() . $product['image']; ?>" alt="Product Image" width="100"></td>                       
                             <td>
                                 <a href="<?php echo base_url('products/update/' . $product['id']); ?>" class="btn btn-primary">Update</a>
                                 <form action="<?php echo base_url('products/delete/' . $product['id']); ?>" method="post" style="display: inline;">
